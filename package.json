@@ -3,18 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "server": "json-server -w ./movies.json -p 3001",
+    "devF": "next dev",
+    "dev": "concurrently \"npm run server\" \"npm run devF\" ",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.0.1",
+    "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.0.4"
+    "react-redux": "^9.0.4",
+    "react-hook-form": "^7.48.2",
+    "json-server": "^0.17.4",
+    "sass": "^1.69.5"
   },
   "devDependencies": {
     "eslint": "^8",
-    "eslint-config-next": "14.0.4"
+    "eslint-config-next": "14.0.4",
+    "concurrently": "^8.2.2"
   }
 }
