@@ -4,12 +4,12 @@ import { useSelector } from "react-redux";
 import { REQUEST_STATUS } from "../../constants/constants";
 import Loading from "../Loading/Loading";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function MoviePage() {
   const { movies } = useSelector( (state) => state.movies );
   const isLoading = useSelector( (state) => state.movies.request.status === REQUEST_STATUS.LOADING );
   const error = useSelector( (state) => state.movies.request.error );
-  // const { movieId } = useParams();
   const movie = movies.find( item => item.id === Number( movieId ) );
 
   return (
@@ -32,7 +32,7 @@ export default function MoviePage() {
 
             <div className={ styles[ "movie-page" ] } id={ movie.id }>
               <div className={ styles[ "movie-page__img-block" ] }>
-                <img src={ movie.poster } className={ styles[ "movie-page__img" ] } alt={ movie.name } />
+                <Image src={ movie.poster } className={ styles[ "movie-page__img" ] } alt={ movie.name } width={250} height={300}/>
               </div>
               <div className={ styles[ "movie-page__text-block" ] }>
                 <h3 className={ styles[ "movie-page__title" ] }>

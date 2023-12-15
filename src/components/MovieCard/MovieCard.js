@@ -3,6 +3,7 @@ import StarIcon from "../StarIcon/StarIcon";
 import Button from "../Button/Button";
 import Link from "next/link";
 import { useDeleteMovieMutation } from "@/redux/services/moviesApi";
+import Image from "next/image";
 
 
 export default function MovieCard({ movie }) {
@@ -18,7 +19,7 @@ export default function MovieCard({ movie }) {
         <li className={ styles.movie } id={ movie.id } key={ movie.id }>
           <div className={ styles[ "movie__img-block" ] }>
             <Link href={ `/${ movie.id }` } className="link">
-              <img src={ movie.poster } className={ styles.movie__img } alt={ movie.name } />
+              <Image src={ movie.poster } className={ styles.movie__img } alt={ movie.name } width={250} height={300}/>
             </Link>
           </div>
           <div className={ styles[ "movie__text-block" ] }>

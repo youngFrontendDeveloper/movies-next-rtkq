@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useGetMovieByIdQuery } from "@/redux/services/moviesApi";
 import Loading from "@/components/Loading/Loading";
+import Image from "next/image";
 
 
 export default function MoviePage() {
@@ -32,7 +33,7 @@ export default function MoviePage() {
 
             <div className={ styles[ "movie-page" ] } id={ data.id }>
               <div className={ styles[ "movie-page__img-block" ] }>
-                <img src={ data.poster } className={ styles[ "movie-page__img" ] } alt={ data.name } />
+                <Image src={ data.poster } className={ styles[ "movie-page__img" ] } alt={ data.name } width={250} height={300}/>
               </div>
               <div className={ styles[ "movie-page__text-block" ] }>
                 <h3 className={ styles[ "movie-page__title" ] }>

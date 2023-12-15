@@ -10,10 +10,10 @@ import { useGetMoviesQuery } from "@/redux/services/moviesApi";
 
 
 export default function HomePage() {
-  const { data: movies, isLoading, error, } = useGetMoviesQuery();
+  const { data: movies, isLoading, error, getMovies} = useGetMoviesQuery();
 
   const resetMovies = ()=>{
-    useGetMoviesQuery()
+    getMovies()
   }
 
   return (
