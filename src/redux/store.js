@@ -10,12 +10,14 @@ export const makeStore = () => {
       foundedResults: foundedResultsReducer,
       [ moviesApi.reducerPath ]: moviesApi.reducer,
     },
+
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(moviesApi.middleware),
+
     devTools: process.env.NODE_ENV !== "production",
   } );
 };
-setupListeners(makeStore.dispatch);
+
 
 // export const store = configureStore ( {
 //     reducer: {

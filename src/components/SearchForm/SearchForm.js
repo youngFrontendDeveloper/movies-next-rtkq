@@ -6,16 +6,14 @@ import FoundedResult from "../FoundedResult/FoundedResult";
 import Button from "../Button/Button";
 import { useForm } from "react-hook-form";
 import { useGetMoviesQuery } from "@/redux/services/api/moviesApi";
-import { useDispatch, useSelector } from "react-redux";
 import { foundedResults } from "@/redux/services/foundedResultsSlice";
+import { useAppDispatch } from "@/redux/services/hooks";
 
 export default function SearchForm() {
   const { data: movies, isLoading, error } = useGetMoviesQuery();
   const [ nothingFound, setNothingFound ] = useState( false );
-  // const {foundedResults} = useSelector(state => state.foundedResults.results);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [ isShowResults, setShowResults ] = useState( false );
-  // const [foundedMovies, setFoundedMovies ] = useState([])
   const { register, handleSubmit, getValues, setValue, formState: { errors } } = useForm( {
     mode: "onTouched",
   } );

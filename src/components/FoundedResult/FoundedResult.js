@@ -1,10 +1,10 @@
 import styles from "./FoundedResult.module.scss";
 import Link from "next/link";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@/redux/services/hooks";
 
 
 export default function FoundedResult({ nothingFound }) {
-  const foundedMovies = useSelector( state => state.foundedResults.results );
+  const foundedMovies = useAppSelector( state => state.foundedResults.results );
 
   return (
     <div className={ styles[ "search-result" ] }>

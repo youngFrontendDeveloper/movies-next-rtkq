@@ -1,0 +1,23 @@
+@use "../../styles/variables" as variable;
+
+.logo {
+  display: inline-block;
+  width: 100px;
+  color: variable.$color-logo;
+  font-family: var(--logoFont);
+  font-size: 26px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: transform 0.5s;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+
+.logo__span {
+  display: inline-block;
+  width: 100%;
+  letter-spacing: 15px;
+}

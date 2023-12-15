@@ -4,10 +4,12 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  //max-width: 900px;
 }
 
 .movies__title {
   margin-bottom: 40px;
+  text-wrap: balance;
 }
 
 .movies__link {
@@ -18,7 +20,7 @@
 .movies__list {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 25px;
   width: 100%;
 }
 
