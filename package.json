@@ -6,7 +6,8 @@
     "server": "json-server -w ./movies.json -p 3001",
     "devF": "next dev",
     "dev": "concurrently \"npm run server\" \"npm run devF\" ",
-    "build": "next build",
+    "buildF": "next build",
+    "build": "concurrently \"npm run server\" \"npm run buildF\" ",
     "start": "next start",
     "lint": "next lint"
   },
