@@ -1,39 +1,38 @@
 import styles from "./SearchForm.module.scss";
 import { useState } from "react";
 // import { searchMovie } from "../../actions";
-import { useDispatch, useSelector } from "react-redux";
+
 import FoundResult from "../FoundResult/FoundResult";
 import Button from "../Button/Button";
 import { useForm } from "react-hook-form";
+import { useGetMoviesQuery } from "@/redux/services/moviesApi";
 
 export default function SearchForm() {
-  // const { movies } = useSelector( (state) => state.movies );
-  // const [ nothingFound, setNothingFound ] = useState( false );
-  // const [ isShowResults, setShowResults ] = useState( false );
-  // const dispatch = useDispatch();
-  // const { foundMovies } = useSelector( state => state.movies );
+const {data: movies, isLoading, error}=useGetMoviesQuery();
+  const [ nothingFound, setNothingFound ] = useState( false );
+  const [ isShowResults, setShowResults ] = useState( false );
+  const [foundedMovies, setFoundedMovies ] = useState([])
   const { register, handleSubmit, getValues, setValue, formState: { errors } } = useForm( {
     mode: "onTouched",
   } );
 
   const onSubmit = async() => {
 
-    // setShowResults( true );
-    // const result = movies.filter( item => {
-    //   const value = getValues().search;
-    //   return item.name.toLowerCase().includes( value.toLowerCase() ) || item.description.toLowerCase().includes( value.toLowerCase() ) || item.genre.toLowerCase().includes( value.toLowerCase() );
-    // } );
+    setShowResults( true );
+    const result = movies.filter( item => {
+      const value = getValues().search;
+      return item.name.toLowerCase().includes( value.toLowerCase() ) || item.description.toLowerCase().includes( value.toLowerCase() ) || item.genre.toLowerCase().includes( value.toLowerCase() );
+    } );
 
-    // if( result.length === 0 ) {
-    //   setNothingFound( true );
-    //   dispatch( searchMovie( result ) );
-    //   setValue("search", "" );
-    //   return;
-    // }
+    if( result.length === 0 ) {
+      setNothingFound( true );
+      setValue("search", "" );
+      return;
+    }
     // console.log( result );
-    // dispatch( searchMovie( result ) );
-    //
-    // setValue("search", "" );
+    setFoundedMovies(result)
+
+    setValue("search", "" );
   };
 
   return (
@@ -65,9 +64,9 @@ export default function SearchForm() {
         <Button text="Искать" />
 
       </form>
-      {/*{*/}
-      {/*  isShowResults && <FoundResult foundMovies={ foundMovies } nothingFound={ nothingFound } />*/}
-      {/*}*/}
+      {
+        isShowResults && <FoundResult foundMovies={ foundedMovies } nothingFound={ nothingFound } />
+      }
     </div>
   );
 }

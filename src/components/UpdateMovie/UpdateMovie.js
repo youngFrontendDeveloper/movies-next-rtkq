@@ -1,11 +1,11 @@
 import styles from "./UpdateMovie.module.scss"
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { useEffect, useState } from "@types/react";
 import { useForm } from "react-hook-form";
 import { updateMovie } from "../../actions";
 
 export default function UpdateMovie(){
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [isSuccess, setSuccess]=useState(false);
   const [ formFields, setFormFields ] = useState( [] );
   const { register, handleSubmit, setValue, getValues, formState: { errors, } } = useForm( {

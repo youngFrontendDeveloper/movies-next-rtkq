@@ -4,12 +4,25 @@
   box-sizing: border-box;
 }
 
+html{
+  height: 100%;
+  overflow-y: scroll;
+}
+
+body {
+  display: flex;   // Прижимаем футер к низу страницы
+  flex-direction: column;
+  height: 100%;
+  color: variable.$color-text;
+}
+
 body, h1, h2, h3, h4, ul, li {
   margin: 0;
   padding: 0;
 }
 
 .main {
+  flex: 1 0 auto;
   padding: 20px 20px;
 }
 
