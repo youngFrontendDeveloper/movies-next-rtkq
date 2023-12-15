@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Form from "../../components/Form/Form";
 import Link from "next/link";
-import { useAddNewMovieMutation,} from "@/redux/services/moviesApi";
+import { useAddNewMovieMutation,} from "@/redux/services/api/moviesApi";
 
 export default function AddMoviePage() {
   const [ addNewMovie,  ] = useAddNewMovieMutation();

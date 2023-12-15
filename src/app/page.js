@@ -6,15 +6,28 @@ import MovieCard from '../components/MovieCard/MovieCard';
 import SearchForm from '../components/SearchForm/SearchForm';
 import Loading from '../components/Loading/Loading';
 import Button from '../components/Button/Button';
-import { useGetMoviesQuery } from "@/redux/services/moviesApi";
+import { useGetMoviesQuery } from "@/redux/services/api/moviesApi";
 
 
 export default function HomePage() {
   const { data: movies, isLoading, error, getMovies} = useGetMoviesQuery();
 
-  const resetMovies = ()=>{
-    getMovies()
+  const resetMovies = async ()=>{
+    await getMovies()
   }
+  //
+  // if(isLoading){
+  //   return <Loading />
+  // }
+  //
+  // if(error){
+  //   return (
+  //     <>
+  //       <p className="error">Ошибка загрузки: {error} </p>
+  //       <Button text="Перезагрузить" func={resetMovies} />
+  //     </>
+  //   )
+  // }
 
   return (
     <section className={styles.movies}>
@@ -23,6 +36,7 @@ export default function HomePage() {
       <Link href="/add-movie" className={`link ${styles['movies__link']}`}>
         Добавить новый фильм
       </Link>
+
       {isLoading ? (
         <Loading />
       ) : !!error ? (
@@ -36,7 +50,8 @@ export default function HomePage() {
             <MovieCard movie={movie} key={movie.id} />
           ))}
         </ul>
-      )}
+      )
+      }
     </section>
   );
 }

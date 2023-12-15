@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { moviesApi } from "@/redux/services/moviesApi";
+import { moviesApi } from "./services/api/moviesApi";
+import foundedResultsReducer from "./services/foundedResultsSlice";
 
 
 export const makeStore = () => {
   return configureStore( {
     reducer: {
+      foundedResults: foundedResultsReducer,
       [ moviesApi.reducerPath ]: moviesApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>

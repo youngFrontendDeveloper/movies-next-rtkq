@@ -32,7 +32,7 @@ export default function MoviePage() {
 
             <div className={ styles[ "movie-page" ] } id={ movie.id }>
               <div className={ styles[ "movie-page__img-block" ] }>
-                <Image src={ movie.poster } className={ styles[ "movie-page__img" ] } alt={ movie.name } width={250} height={300}/>
+                <Image src={ movie.poster } className={ styles[ "movie-page__img" ] } alt={ movie.name } width={250} height={300} />
               </div>
               <div className={ styles[ "movie-page__text-block" ] }>
                 <h3 className={ styles[ "movie-page__title" ] }>

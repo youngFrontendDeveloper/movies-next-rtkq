@@ -2,16 +2,20 @@ import styles from "./SearchForm.module.scss";
 import { useState } from "react";
 // import { searchMovie } from "../../actions";
 
-import FoundResult from "../FoundResult/FoundResult";
+import FoundedResult from "../FoundedResult/FoundedResult";
 import Button from "../Button/Button";
 import { useForm } from "react-hook-form";
-import { useGetMoviesQuery } from "@/redux/services/moviesApi";
+import { useGetMoviesQuery } from "@/redux/services/api/moviesApi";
+import { useDispatch, useSelector } from "react-redux";
+import { foundedResults } from "@/redux/services/foundedResultsSlice";
 
 export default function SearchForm() {
-const {data: movies, isLoading, error}=useGetMoviesQuery();
+  const { data: movies, isLoading, error } = useGetMoviesQuery();
   const [ nothingFound, setNothingFound ] = useState( false );
+  // const {foundedResults} = useSelector(state => state.foundedResults.results);
+  const dispatch = useDispatch();
   const [ isShowResults, setShowResults ] = useState( false );
-  const [foundedMovies, setFoundedMovies ] = useState([])
+  // const [foundedMovies, setFoundedMovies ] = useState([])
   const { register, handleSubmit, getValues, setValue, formState: { errors } } = useForm( {
     mode: "onTouched",
   } );
@@ -25,14 +29,17 @@ const {data: movies, isLoading, error}=useGetMoviesQuery();
     } );
 
     if( result.length === 0 ) {
+      // setShowResults( false );
       setNothingFound( true );
-      setValue("search", "" );
+      setValue( "search", "" );
+      dispatch( foundedResults( result ) );
       return;
     }
-    // console.log( result );
-    setFoundedMovies(result)
 
-    setValue("search", "" );
+    // setFoundedMovies(result)
+    dispatch( foundedResults( result ) );
+    setValue( "search", "" );
+
   };
 
   return (
@@ -65,7 +72,7 @@ const {data: movies, isLoading, error}=useGetMoviesQuery();
 
       </form>
       {
-        isShowResults && <FoundResult foundMovies={ foundedMovies } nothingFound={ nothingFound } />
+        isShowResults && <FoundedResult nothingFound={ nothingFound } />
       }
     </div>
   );

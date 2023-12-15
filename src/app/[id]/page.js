@@ -3,7 +3,7 @@
 import styles from "./page.module.scss";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useGetMovieByIdQuery } from "@/redux/services/moviesApi";
+import { useGetMovieByIdQuery } from "@/redux/services/api/moviesApi";
 import Loading from "@/components/Loading/Loading";
 import Image from "next/image";
 

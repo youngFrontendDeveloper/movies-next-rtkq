@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Form from "../../../components/Form/Form";
 import Link from "next/link";
-import { useEditMovieMutation, useGetMovieByIdQuery } from "@/redux/services/moviesApi";
+import { useEditMovieMutation, useGetMovieByIdQuery } from "@/redux/services/api/moviesApi";
 import Loading from "@/components/Loading/Loading";
 
 export default function ChangeMoviePage({ params }) {

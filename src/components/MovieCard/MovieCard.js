@@ -2,7 +2,7 @@ import styles from "./MovieCard.module.scss";
 import StarIcon from "../StarIcon/StarIcon";
 import Button from "../Button/Button";
 import Link from "next/link";
-import { useDeleteMovieMutation } from "@/redux/services/moviesApi";
+import { useDeleteMovieMutation } from "@/redux/services/api/moviesApi";
 import Image from "next/image";
 
 
