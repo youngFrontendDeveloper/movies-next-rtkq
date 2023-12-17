@@ -1,0 +1,9 @@
+@use "../../styles/variables" as variable;
+
+.title {
+  width: 100%;
+  font-size: 40px;
+  text-align: center;
+  color: variable.$color-title;
+  text-wrap: balance;
+}

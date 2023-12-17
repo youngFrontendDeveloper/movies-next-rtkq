@@ -7,6 +7,8 @@ import SearchForm from '../components/SearchForm/SearchForm';
 import Loading from '../components/Loading/Loading';
 import Button from '../components/Button/Button';
 import { useGetMoviesQuery } from "@/redux/services/api/moviesApi";
+import Image from "next/image";
+import Title from "@/components/Title/Title";
 
 
 export default function HomePage() {
@@ -15,23 +17,10 @@ export default function HomePage() {
   const resetMovies = async ()=>{
     await getMovies()
   }
-  //
-  // if(isLoading){
-  //   return <Loading />
-  // }
-  //
-  // if(error){
-  //   return (
-  //     <>
-  //       <p className="error">Ошибка загрузки: {error} </p>
-  //       <Button text="Перезагрузить" func={resetMovies} />
-  //     </>
-  //   )
-  // }
 
   return (
     <section className={styles.movies}>
-      <h2 className={`title ${styles.movies__title}`}>Коллекция фильмов на Новый год</h2>
+      <Title titleClass={styles.movies__title} title="Коллекция фильмов на Новый год"/>
       <SearchForm />
       <Link href="/add-movie" className={`link ${styles['movies__link']}`}>
         Добавить новый фильм

@@ -6,24 +6,24 @@
     "server": "json-server -w ./movies.json -p 3001",
     "devF": "next dev",
     "dev": "concurrently \"npm run server\" \"npm run devF\" ",
-    "buildF": "next build",
-    "build": "concurrently \"npm run server\" \"npm run buildF\" ",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.0.1",
+    "json-server": "^0.17.4",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
-    "react-redux": "^9.0.4",
     "react-hook-form": "^7.48.2",
-    "json-server": "^0.17.4",
-    "sass": "^1.69.5"
+    "react-redux": "^9.0.4",
+    "sass": "^1.69.5",
+    "sharp": "^0.33.0"
   },
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "eslint": "^8",
-    "eslint-config-next": "14.0.4",
-    "concurrently": "^8.2.2"
+    "eslint-config-next": "14.0.4"
   }
 }
